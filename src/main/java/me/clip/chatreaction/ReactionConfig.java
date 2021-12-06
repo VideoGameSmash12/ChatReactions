@@ -21,7 +21,6 @@ public class ReactionConfig
 
         c.options().header("ChatReaction version " + this.plugin.getDescription().getVersion() + " configuration file");
         c.addDefault("debug", false);
-        c.addDefault("check_updates", true);
         c.addDefault("reaction_stats.track_stats", false);
         c.addDefault("reaction_stats.top_players_size", 100);
         c.addDefault("reaction_stats.hostname", "localhost");

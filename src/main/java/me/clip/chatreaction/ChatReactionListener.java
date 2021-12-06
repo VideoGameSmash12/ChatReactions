@@ -8,19 +8,15 @@ import me.clip.chatreaction.events.ReactionWinEvent;
 import me.clip.chatreaction.reactionplayer.ReactionPlayer;
 import me.clip.chatreaction.tasks.AddWinTask;
 import me.clip.chatreaction.tasks.LoadPlayerTask;
-import me.clip.chatreaction.updater.SpigotUpdater;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitTask;
 
 
 public class ChatReactionListener implements Listener
@@ -35,13 +31,6 @@ public class ChatReactionListener implements Listener
     @EventHandler
     public void onJoin(PlayerJoinEvent e)
     {
-        if ((e.getPlayer().hasPermission("chatreaction.admin") || e.getPlayer().isOp()) && this.plugin.updater != null && SpigotUpdater.updateAvailable())
-        {
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l» &7&oAn Update for &aChatReaction &7&ohas been found!"));
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l» &7Your Version: [&c" + this.plugin.getDescription().getVersion() + "&7] &8&l- &7New Version: [&c" + SpigotUpdater.getHighest() + "&7]"));
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l» &7&oDownload at &fhttp://www.spigotmc.org/resources/chatreaction.3748/"));
-        }
-
         if (this.plugin.getOptions().trackStats())
         {
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, new LoadPlayerTask(this.plugin, e.getPlayer().getUniqueId().toString(), e.getPlayer().getName()));

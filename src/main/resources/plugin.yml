@@ -1,6 +1,6 @@
 name: ChatReaction
 main: me.clip.chatreaction.ChatReaction
-version: 1.8.0
+version: 1.8.1
 api-version: 1.16
 author: extended_clip
 description: Be the fastest to type the random text and win!

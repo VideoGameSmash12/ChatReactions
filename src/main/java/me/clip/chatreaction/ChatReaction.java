@@ -1,6 +1,4 @@
-
 package me.clip.chatreaction;
-
 
 import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
@@ -23,17 +21,13 @@ import me.clip.chatreaction.hooks.VaultHook;
 import me.clip.chatreaction.reactionplayer.ReactionPlayer;
 import me.clip.chatreaction.tasks.IntervalTask;
 import me.clip.chatreaction.tasks.LoadTopTask;
-import me.clip.chatreaction.updater.SpigotUpdater;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-
 
 public class ChatReaction extends JavaPlugin
 {
@@ -49,7 +43,6 @@ public class ChatReaction extends JavaPlugin
     private static BukkitTask iTask = null;
     private static BukkitTask endTask = null;
     protected static Database database = null;
-    protected SpigotUpdater updater = null;
     public static Map<String, ReactionPlayer> reactionPlayers = new HashMap<>();
     public static List<ReactionPlayer> topPlayers = new ArrayList<>();
     private SpigotChat chat;
@@ -79,36 +72,6 @@ public class ChatReaction extends JavaPlugin
         if (startDatabase())
         {
             Bukkit.getScheduler().runTaskLaterAsynchronously((Plugin) this, (Runnable) new LoadTopTask(this), 20L);
-        }
-
-        if (getConfig().getBoolean("check_updates"))
-        {
-            this.updater = new SpigotUpdater(this);
-            this.updater.checkUpdates();
-
-            if (SpigotUpdater.updateAvailable())
-            {
-                System.out.println("---------------------------");
-                System.out.println("     ChatReaction Updater");
-                System.out.println(" ");
-                System.out.println("An update for ChatReaction has been found!");
-                System.out.println("ChatReaction " + SpigotUpdater.getHighest());
-                System.out.println("You are running " + getDescription().getVersion());
-                System.out.println(" ");
-                System.out.println("Download at http://www.spigotmc.org/resources/chatreaction.3748/");
-                System.out.println("---------------------------");
-            }
-            else
-            {
-                System.out.println("---------------------------");
-                System.out.println("     ChatReaction Updater");
-                System.out.println(" ");
-                System.out.println("You are running " + getDescription().getVersion());
-                System.out.println("The latest version");
-                System.out.println("of ChatReaction!");
-                System.out.println(" ");
-                System.out.println("---------------------------");
-            }
         }
 
         setupHooks();
