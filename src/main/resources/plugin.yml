@@ -1,22 +1,22 @@
 name: ChatReaction
 main: me.clip.chatreaction.ChatReaction
 version: 1.8.0
-api-version: 1.13
+api-version: 1.16
 author: extended_clip
 description: Be the fastest to type the random text and win!
 commands:
-   reaction:
-     description: ChatReaction commands
+  reaction:
+    description: ChatReaction commands
 permissions:
-    chatreaction.admin:
-        description: ability to reload the plugin
-        default: op
-    chatreaction.wins:
-        description: ability to view own wins
-        default: op
-    chatreaction.wins.others:
-        description: ability to view others wins
-        default: op
-    chatreaction.top:
-        description: ability to view top winners
-        default: op
+  chatreaction.admin:
+    description: ability to reload the plugin
+    default: op
+  chatreaction.wins:
+    description: ability to view own wins
+    default: op
+  chatreaction.wins.others:
+    description: ability to view others wins
+    default: op
+  chatreaction.top:
+    description: ability to view top winners
+    default: op

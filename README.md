@@ -1,2 +1,3 @@
 # ChatReactions
- An open-source decompilation of the ChatReactions plugin
+
+An open-source decompilation of the ChatReactions plugin
